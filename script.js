@@ -1,19 +1,23 @@
-fetch('https://raw.githubusercontent.com/Re-z/js-practice/master/arsenal.json').then( function(response) {
-    return response.json()
-}).then(function (obj) {
+init();
 
+function init() {
+    fetch('arsenal.json').then(function(response) {
+        return response.json();
+    }).then(createList);
+}
 
+function createList(json) {
     var list = document.createElement('ul');
     list.classList.add('list');
-    for (keys in obj) {
+
+    Object.keys(json).map(function(key) {
         var item = document.createElement('li');
-        item.innerHTML = keys;
+        item.innerHTML = key;
         list.appendChild(item);
-    }
+    });
+
     document.body.appendChild(list);
+}
 
-
-
-
-
-})
+// TODO: install https://github.com/tapio/live-server
+// TODO: open lists on click
