@@ -3,21 +3,39 @@ init();
 function init() {
     fetch('arsenal.json').then(function(response) {
         return response.json();
-    }).then(createList);
+    }).then(createLists);
 }
 
-function createList(json) {
+function createLists(json) {
     var list = document.createElement('ul');
     list.classList.add('list');
 
-    Object.keys(json).map(function(key) {
+    for (keys in json) {
         var item = document.createElement('li');
-        item.innerHTML = key;
-        list.appendChild(item);
-    });
+        item.innerHTML = keys;
+        //creating sublist
+        var sublist = document.createElement('ul');
+        sublist.classList.add('sublist');
 
+        //generating sublist items
+        for(var i = 0; i < json[keys].length; i++) {
+            var sublistItem = document.createElement('li');
+            sublistItem.innerHTML = json[keys][i];
+            sublist.appendChild(sublistItem);
+        }
+        item.appendChild(sublist);
+        list.appendChild(item);
+    }
     document.body.appendChild(list);
 }
+
+var list = document.getElementsByClassName('list');
+console.log(list[0]);
+
+
+
+
+
 
 // TODO: install https://github.com/tapio/live-server
 // TODO: open lists on click

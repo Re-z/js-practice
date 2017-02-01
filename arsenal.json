@@ -1,23 +1,6 @@
 {
-    "founded": 1886,
-    "stadion": "Emirates Stadium",
-    "owner": "Arsenal Holdings plc",
-    "league": "Premier League",
-    "website": "http://www.arsenal.com/home",
-    "players": {
-    "number": 20,
-        "names": ["Mathieu Debuchy", "Kieran Gibbs", "Per Mertesacker", "Gabriel", "Laurent Koscielny", "Alexis Sánchez", "Aaron Ramsey", "\tLucas Pérez", "Mesut Özil", "Olivier Giroud", "David Ospina", "Theo Walcott", "Alex Oxlade-Chamberlain", "Rob Holding", "Alex Iwobi", "Nacho Monreal", "Santi Cazorla", "Shkodran Mustafi", "Yaya Sanogo", "Danny Welbeck"],
-        "captain": "Per Mertesacker",
-        "avarageAge": 27,
-        "injuredNumber": 3,
-        "injuredNames": ["Mesut Özil", "Olivier Giroud", "David Ospina"]
-},
-    "managers": {
-    "number": 10,
-        "mainManager": "Arsene Wenger",
-        "helpManager": "Otto Barabuka"
-},
-    "support": {
-    "number": 40
-}
+
+  "names": ["Mathieu Debuchy", "Kieran Gibbs", "Per Mertesacker", "Gabriel", "Laurent Koscielny", "Alexis Sánchez", "Aaron Ramsey", "\tLucas Pérez", "Mesut Özil", "Olivier Giroud", "David Ospina", "Theo Walcott", "Alex Oxlade-Chamberlain", "Rob Holding", "Alex Iwobi", "Nacho Monreal", "Santi Cazorla", "Shkodran Mustafi", "Yaya Sanogo", "Danny Welbeck"],
+  "injuredNames": ["Mesut Özil", "Olivier Giroud", "David Ospina"]
+
 }
