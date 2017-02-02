@@ -1,3 +1,5 @@
+'use strict';
+
 init();
 
 function init() {
@@ -6,11 +8,13 @@ function init() {
     }).then(createLists);
 }
 
+//creating
 function createLists(json) {
     var list = document.createElement('ul');
+    list.addEventListener('click', handleClick);
     list.classList.add('list');
 
-    for (keys in json) {
+    for (var keys in json) {
         var item = document.createElement('li');
         item.innerHTML = keys;
         //creating sublist
@@ -21,6 +25,7 @@ function createLists(json) {
         for(var i = 0; i < json[keys].length; i++) {
             var sublistItem = document.createElement('li');
             sublistItem.innerHTML = json[keys][i];
+
             sublist.appendChild(sublistItem);
         }
         item.appendChild(sublist);
@@ -29,13 +34,10 @@ function createLists(json) {
     document.body.appendChild(list);
 }
 
-var list = document.getElementsByClassName('list');
-console.log(list[0]);
+function handleClick(ev) {
+    var sublist = ev.target.querySelector('.sublist');
+    if (!sublist) return;
 
+    sublist.classList.toggle('visible');
+}
 
-
-
-
-
-// TODO: install https://github.com/tapio/live-server
-// TODO: open lists on click
