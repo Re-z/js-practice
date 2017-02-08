@@ -3,7 +3,7 @@ init();
 function init() {
     fetch('arsenal.json').then(function(response) {
         return response.json();
-    }).then(createLists).then(addBehavior);
+    }).then(createLists).then(createSublist);
 }
 
 
@@ -24,13 +24,13 @@ function createLists(json) {
         sublist.classList.add('sublist');
 
         //generating sublist items
-        for(var i = 0; i < json[keys].length; i++) {
-            var sublistItem = document.createElement('li');
-            sublistItem.innerHTML = json[keys][i];
-
-            sublist.appendChild(sublistItem);
-        }
-        item.appendChild(sublist);
+        //for(var i = 0; i < json[keys].length; i++) {
+        //    var sublistItem = document.createElement('li');
+        //    sublistItem.innerHTML = json[keys][i];
+        //
+        //    sublist.appendChild(sublistItem);
+        //}
+        //item.appendChild(sublist);
         list.appendChild(item);
     }
     document.body.appendChild(list);
@@ -38,11 +38,12 @@ function createLists(json) {
 
 
 //adding eventListener
-function addBehavior(){
+function createSublist(){
     var listItem = document.querySelectorAll('.list>li');
+
     for(var i = 0; i < listItem.length; i++) {
         listItem[i].addEventListener('click', function(){
-            this.firstElementChild.classList.toggle('visible');
+
         })
     }
 }
