@@ -1,58 +1,35 @@
-init();
 
-function init() {
-    fetch('arsenal.json').then(function(response) {
-        return response.json();
-    }).then(createLists).then(createSublist);
-}
-
-
-
+//
+//
+//
+//
+//
+//// TODO: install https://github.com/tapio/live-server
+//// TODO: open lists on click
 
 
+var request = new XMLHttpRequest();
+request.open("GET", 'arsenal.json');
+var loadedData;
+request.addEventListener('load', function () {
+    loadedData = JSON.parse(request.responseText);
+});
+request.send();
 
-//creating
-function createLists(json) {
-    var list = document.createElement('ul');
-    list.classList.add('list');
+var block = document.querySelector('.wrap');
+block.addEventListener('click', function(ev){
+    var target = ev.target;
+    var list = target.nextElementSibling;
 
-    for (keys in json) {
-        var item = document.createElement('li');
-        item.innerHTML = keys;
-        //creating sublist
-        var sublist = document.createElement('ul');
-        sublist.classList.add('sublist');
-
-        //generating sublist items
-        //for(var i = 0; i < json[keys].length; i++) {
-        //    var sublistItem = document.createElement('li');
-        //    sublistItem.innerHTML = json[keys][i];
-        //
-        //    sublist.appendChild(sublistItem);
-        //}
-        //item.appendChild(sublist);
-        list.appendChild(item);
+    if(target.tagName == "SPAN" && !list.firstChild){
+        var targetAttr = target.getAttribute('data-class');
+        var generatedData = '';
+        loadedData[targetAttr].forEach(function(item){
+            generatedData += '<li>' + item + '</li>'
+        });
+        list.insertAdjacentHTML('beforeend', generatedData);
     }
-    document.body.appendChild(list);
-}
-
-
-//adding eventListener
-function createSublist(){
-    var listItem = document.querySelectorAll('.list>li');
-
-    for(var i = 0; i < listItem.length; i++) {
-        listItem[i].addEventListener('click', function(){
-
-        })
+    else {
+        list.innerHTML = ""
     }
-}
-
-
-
-
-
-
-
-// TODO: install https://github.com/tapio/live-server
-// TODO: open lists on click
+});
